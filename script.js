@@ -45,11 +45,19 @@ $(".description").each(function (index) {
 $(".time-block").each(function (idex) {
   // get current hour
   // get row time
+  var presentTime = $(".description").val();
   var time = dayjs().hour();
-  var currentTime = $(".time-block");
-  if (currentTime === dayjs) {
-    console.log("Hello");
+
+  if (time > presentTime) {
+    presentTime.css("background-color", "#77dd77");
+  } else {
+    console.log("HI");
   }
+  // } else if (time < presentTime) {
+  //   presentTime.css("background-color", "#ff6961");
+  // } else {
+  //   presentTime.css("background-color", "#d3d3d3");
+  // }
 });
 
 function realTime() {
@@ -60,3 +68,7 @@ function realTime() {
   currentDay.text(dateOfMonth);
 }
 realTime();
+// var presentTime = $(".description");
+// presentTime.css("background-color", "green");
+var presentTime = $(".text-center").val("");
+console.log(presentTime);
