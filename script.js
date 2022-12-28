@@ -2,7 +2,7 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 var hours = $("time-block");
-console.log(hours);
+// console.log(hours);
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -48,11 +48,11 @@ $(".time-block").each(function (idex) {
   var presentTime = $(".description").val();
   var time = dayjs().hour();
 
-  if (time > presentTime) {
-    presentTime.css("background-color", "#77dd77");
-  } else {
-    console.log("HI");
-  }
+  // if (time > presentTime) {
+  //   presentTime.css("background-color", "#77dd77");
+  // } else {
+  //   console.log("HI");
+  // }
   // } else if (time < presentTime) {
   //   presentTime.css("background-color", "#ff6961");
   // } else {
@@ -63,12 +63,18 @@ $(".time-block").each(function (idex) {
 function realTime() {
   const currentDay = $("#currentDay");
 
-  const dateOfMonth = dayjs().day(2).hour(1);
+  let dateOfMonth = dayjs("2022").day("28").hour();
 
   currentDay.text(dateOfMonth);
 }
 realTime();
 // var presentTime = $(".description");
 // presentTime.css("background-color", "green");
-var presentTime = $(".text-center").val("");
+// var presentTime = $(".text-center").val("");
+// console.log(presentTime);
+
+var presentTime = $("#hour").children(0).eq(1);
+var time = dayjs().hour();
+
 console.log(presentTime);
+// console.log(time);
