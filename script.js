@@ -32,49 +32,36 @@ $(".saveBtn").on("click", function () {
 
   localStorage.setItem(getTime, getValue);
 });
-
+// Loop over text areas
 $(".description").each(function (index) {
-  // We wanna grab value from local storage based on id
-  var getTime = $(this).parent().attr("id");
-
+  // extract hour id so that we can check localstorage
+  //var getTime = $(this).parent().attr("id");
+  var timeBlock = document.querySelectorAll(".time-block")[index];
+  const getTime = timeBlock.getAttribute("id");
+  //
   var gettingValue = localStorage.getItem(getTime);
 
   $(this).val(gettingValue);
 });
-// ⬇ This gonna change all the colors for calender
+
 $(".time-block").each(function (idex) {
-  // get current hour
-  // get row time
-  var presentTime = $(".description").val();
+  var presentTime = parseInt($(this).attr("id").replace("hour-", ""));
   var time = dayjs().hour();
 
-  // if (time > presentTime) {
-  //   presentTime.css("background-color", "#77dd77");
-  // } else {
-  //   console.log("HI");
-  // }
-  // } else if (time < presentTime) {
-  //   presentTime.css("background-color", "#ff6961");
-  // } else {
-  //   presentTime.css("background-color", "#d3d3d3");
-  // }
+  if (time > presentTime) {
+    $(this).addClass("past");
+  } else if (time < presentTime) {
+    $(this).addClass("future");
+  } else {
+    $(this).addClass("present");
+  }
 });
-
+// Need help getting the time always updated
 function realTime() {
   const currentDay = $("#currentDay");
 
-  let dateOfMonth = dayjs("2022").day("28").hour();
+  let dateOfMonth = dayjs().format("dddd, MMMM DD, YYYY");
 
   currentDay.text(dateOfMonth);
 }
 realTime();
-// var presentTime = $(".description");
-// presentTime.css("background-color", "green");
-// var presentTime = $(".text-center").val("");
-// console.log(presentTime);
-
-var presentTime = $("#hour").children(0).eq(1);
-var time = dayjs().hour();
-
-console.log(presentTime);
-// console.log(time);
